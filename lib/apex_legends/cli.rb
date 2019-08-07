@@ -17,7 +17,7 @@ class ApexLegends::CLI
   end 
   
   def menu
-    puts "Select the Legend you'd like to know more about by entering their number. Type 'exit' once you have chosen"
+    puts "Select the Legend you'd like to know more about by entering their number. Type 'list legends' to see the list again or type 'exit' to exit"
     input = nil 
     while input != "exit"
       input = gets.strip.downcase
@@ -28,6 +28,10 @@ class ApexLegends::CLI
         puts "More info on Legend 2..."
       when "3"
         puts "More info on Legend 3..."
+      when "list legends"
+        list_legends
+      else 
+        puts "I'm not sure what you're asking for. Type 'list legends' to see the available options again."
       end 
     end 
   end 
