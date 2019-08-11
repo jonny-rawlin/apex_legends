@@ -16,17 +16,17 @@ def stat_scraper
  
   legend_stats.css("div.box___jUrgl.stats___8TQpl").each do |legend|
     binding.pry
-  end 
-  #   name = legend.css("h2.bbcard_name strong a").text
-  #   legends[name.to_sym] = {
-  #     :image_link => legend.css("div.project-thumbnail a img").text.gsub("%","").to_i,
-  #     :description => legend.css("p.bbcard_blurb").text.gsub("%","").to_i,
-  #     :location => legend.css("ul.project-meta span.location-name").text.gsub("%","").to_i,
-  #     :percent_funded => legend.css("ul.project-stats li.first.funded strong").text.gsub("%","").to_i
-  #   }
-  # end
+    name = legend.css("h2.bbcard_name strong a").text
+    legends[name.to_sym] = {
+      :percentage_chosen => legend.css("").text.gsub("%","").to_i,
+      :win_rate => legend.css("").text.gsub("%","").to_i,
+      :damage_per_match => legend.css("").text.gsub("%","").to_i,
+      :kills_per_match => legend.css("").text.gsub("%","").to_i,
+      :headshots_per_kill => legend.css("").text.gsub("%","").to_i
+    }
+  end
   
-  # legends
+  legends
 end
 
-# stat_scraper 
+stat_scraper 
