@@ -20,8 +20,9 @@ class ApexLegends::CLI
     while input != "exit"
       input = gets.strip.downcase
       
-      if input.to_i > 0 
-        puts @legends[input.to_i-1]
+      if input.to_i > 0
+        the_legend = @legends[input.to_i-1]
+        puts "#{the_legend.name} - #{the_legend.abilities}"
       elsif input == "list legends"
         list_legends 
       end 
