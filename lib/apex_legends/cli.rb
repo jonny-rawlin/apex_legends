@@ -8,12 +8,10 @@ class ApexLegends::CLI
   
   def list_legends
     puts "Available Legends:"
-    puts <<-DOC.gsub /^\s*/, ''
-      1. Wraith 
-      2. Bangalor
-      3. Lifeline 
-      4. Pathfinder 
-    DOC
+    @legends = ApexLegends::Legends.all_legends
+    @legends.each.with_index(1) do |legend, i|
+      puts "#{i}. #{legend.name} - #{legend.abilities}"
+    end 
   end 
   
   def menu
@@ -21,17 +19,11 @@ class ApexLegends::CLI
     input = nil 
     while input != "exit"
       input = gets.strip.downcase
-      case input 
-      when "1"
-        puts "More info on Legend 1..."
-      when "2"
-        puts "More info on Legend 2..."
-      when "3"
-        puts "More info on Legend 3..."
-      when "list legends"
-        list_legends
-      else 
-        puts "I'm not sure what you're asking for. Type 'list legends' to see the available options again."
+      
+      if input.to_i > 0 
+        puts @legends[input.to_i-1]
+      elsif input == "list legends"
+        list_legends 
       end 
     end 
   end 
