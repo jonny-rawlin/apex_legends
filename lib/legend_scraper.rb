@@ -8,11 +8,10 @@ def stat_scraper
   legends = {}
   names = legend_stats.css("p.dynamicSidebarItemTitle___-SjTz.labelL___qgsCI.condensed___28u8b")[5..-1]
   
-  legend_stats.css("div.general___3NxDu").each_with_index do |legend, i|
-    #name = legend.css("p[breed='title']").text
+  legend_stats.css("div.general___3NxDu").each_with_index do |stats, i|
     name = names[i].text
     legends[name.to_sym] = {
-    #   :percentage_chosen => legend.css("").text.gsub("%","").to_i,
+       :percentage_chosen => (stats.text).split,
     #   :win_rate => legend.css("").text.gsub("%","").to_i,
     #   :damage_per_match => legend.css("").text.gsub("%","").to_i,
     #   :kills_per_match => legend.css("").text.gsub("%","").to_i,
@@ -24,4 +23,4 @@ def stat_scraper
   legends
 end
 
-stat_scraper 
+stat_scraper
