@@ -11,16 +11,18 @@ def stat_scraper
   legend_stats.css("div.general___3NxDu").each_with_index do |stats, i|
     name = names[i].text
     legends[name.to_sym] = {
-       :percentage_chosen => (stats.text).split,
-    #   :win_rate => legend.css("").text.gsub("%","").to_i,
-    #   :damage_per_match => legend.css("").text.gsub("%","").to_i,
-    #   :kills_per_match => legend.css("").text.gsub("%","").to_i,
-    #   :headshots_per_kill => legend.css("").text.gsub("%","").to_i
+       :percentage_chosen => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[3],
+       :win_rate => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[5],
+       :damage_per_match => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[9],
+       :kills_per_match => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[13],
+       :headshots_per_kill => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[17]
     }
     binding.pry
   end
   
   legends
 end
+
+# div.box___jUrgl.general___3_ihh.justify_center___25GU_.align_end___3tvCR
 
 stat_scraper
