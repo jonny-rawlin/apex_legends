@@ -10,7 +10,7 @@ class ApexLegends::CLI
     puts "Available Legends:"
     @legends = ApexLegends::Legends.all_legends
     @legends.each.with_index(1) do |legend, i|
-      puts "#{i}. #{legend.name} - #{legend.abilities}"
+      puts "#{i}. #{legend.name}"
     end 
   end 
   
@@ -22,7 +22,7 @@ class ApexLegends::CLI
       
       if input.to_i > 0
         the_legend = @legends[input.to_i-1]
-        puts "#{the_legend.name} - #{the_legend.abilities}"
+        puts "#{the_legend.name} - #{the_legend.abilities} - #{the_legend.stats} - #{the_legend.bio}"
       elsif input == "list legends"
         list_legends 
       end 

@@ -3,13 +3,6 @@ class ApexLegends::Legends
   attr_accessor :name, :stats, :abilities, :bio 
   
   def self.all_legends
-    puts <<-DOC.gsub /^\s*/, ''
-      1. Wraith 
-      2. Bangalor
-      3. Lifeline 
-      4. Pathfinder 
-    DOC
-    
     legend_1 = self.new 
     legend_1.name = "Wraith"
     legend_1.stats = "Random stats"
@@ -22,7 +15,19 @@ class ApexLegends::Legends
     legend_2.abilities = "Three abilities"
     legend_2.bio = "Interesting facts"
     
-    [legend_1, legend_2]
+    legend_3 = self.new 
+    legend_3.name = "Pathfinder"
+    legend_3.stats = "Random stats"
+    legend_3.abilities = "Three abilities"
+    legend_3.bio = "Interesting facts"
+    
+    legend_4 = self.new 
+    legend_4.name = "Bloodhound"
+    legend_4.stats = "Random stats"
+    legend_4.abilities = "Three abilities"
+    legend_4.bio = "Interesting facts"
+    
+    [legend_1, legend_2, legend_3, legend_4]
   end 
   
 end 
