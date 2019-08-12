@@ -5,18 +5,18 @@ require 'pry'
 def stat_scraper
   legend_stats = Nokogiri::HTML(open("https://dreamteam.gg/apex/legends/pathfinder"))
   
-  # legends = {}
+  legends = {}
  
   legend_stats.css("div.box___jUrgl.stats___8TQpl").each do |legend|
-    binding.pry
-    name = legend.css("h2.bbcard_name strong a").text
+    name = legend.css("span div.box___jUrgl.item___29sDA.legend___28WrD").text
     legends[name.to_sym] = {
-      :percentage_chosen => legend.css("").text.gsub("%","").to_i,
-      :win_rate => legend.css("").text.gsub("%","").to_i,
-      :damage_per_match => legend.css("").text.gsub("%","").to_i,
-      :kills_per_match => legend.css("").text.gsub("%","").to_i,
-      :headshots_per_kill => legend.css("").text.gsub("%","").to_i
+    #   :percentage_chosen => legend.css("").text.gsub("%","").to_i,
+    #   :win_rate => legend.css("").text.gsub("%","").to_i,
+    #   :damage_per_match => legend.css("").text.gsub("%","").to_i,
+    #   :kills_per_match => legend.css("").text.gsub("%","").to_i,
+    #   :headshots_per_kill => legend.css("").text.gsub("%","").to_i
     }
+    binding.pry
   end
   
   legends
