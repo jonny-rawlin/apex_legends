@@ -6,7 +6,11 @@ class Legends
   attr_accessor :name, :stats, :abilities, :bio 
   
   def self.all_legends
-    LegendScraper.stat_scraper
+    @legends = LegendScraper.stat_scraper
+    @legends.each.with_index(1) do |legend, i|
+      puts "#{i}. #{legend[0]}" 
+    end 
+      
     # legend_1 = self.new 
     # legend_1.name = "Wraith"
     # legend_1.stats = "Random stats"
@@ -33,5 +37,5 @@ class Legends
     
     # [legend_1, legend_2, legend_3, legend_4]
   end 
-  binding.pry 
+  binding.pry
 end 

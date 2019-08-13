@@ -8,7 +8,7 @@ class ApexLegends::CLI
   
   def list_legends
     puts "Available Legends:"
-    @legends = ApexLegends::Legends.all_legends
+    @legends = Legends.all_legends
     @legends.each.with_index(1) do |legend, i|
       puts "#{i}. #{legend.name}"
     end 
