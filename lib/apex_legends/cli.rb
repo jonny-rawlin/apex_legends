@@ -13,16 +13,16 @@ class ApexLegends::CLI
   end 
   
   def menu
-    puts "Select the Legend you'd like to know more about by entering their number. Type 'list legends' to see the list again or type 'exit' to exit"
+    puts "Select the Legend you'd like to know more about by entering their number. Type 'exit' at any time to exit the program"
     input = nil 
     while input != "exit"
       input = gets.strip.downcase
       
       if input.to_i > 0
         the_legend = @legends[input.to_i-1]
-        puts "#{the_legend.name} - #{the_legend.abilities} - #{the_legend.stats} - #{the_legend.bio}"
+        puts "#{Legends.stats}\r\n\r\n- If you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
-        list_legends 
+        puts @legends
       end 
     end 
   end 

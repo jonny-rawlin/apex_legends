@@ -13,7 +13,16 @@ class Legends
     end 
       
     legend_array
-      
+  end
+  
+  def self.stats
+    @legend_stats = LegendScraper.all
+    @legend_stats
+    # ability_1 = 
+    # ability_2 = 
+    # ability_3 =
+  end 
+  
     # legend_1 = self.new 
     # legend_1.name = "Wraith"
     # legend_1.stats = "Random stats"
@@ -39,5 +48,5 @@ class Legends
     # legend_4.bio = "Interesting facts"
     
     # [legend_1, legend_2, legend_3, legend_4]
-  end 
+  binding.pry
 end 

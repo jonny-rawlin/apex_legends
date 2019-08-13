@@ -25,9 +25,14 @@ class LegendScraper
         # :damage_per_match => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[9].to_f,
         # :kills_per_match => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[13].to_f,
         # :headshots_per_kill => ((((((((((stats.text).insert(16, " ")).insert(22, " ")).insert(30, " ")).insert(36, " ")).insert(53, " ")).insert(60, " ")).insert(76, " ")).insert(81, " ")).insert(100, " ")).split(" ")[17].to_f
-      } 
+      }
     end
     
     @@legends
   end
+  
+  def self.all 
+    @@legends
+  end 
+  binding.pry 
 end
