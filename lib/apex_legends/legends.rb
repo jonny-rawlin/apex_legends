@@ -1,12 +1,12 @@
 require 'pry'
-require_relative './legend_scraper.rb'
+require_relative 'legend_scraper'
 
 class Legends
-  include LegendScraper
   
   attr_accessor :name, :stats, :abilities, :bio 
   
   def self.all_legends
+    LegendScraper.stat_scraper
     # legend_1 = self.new 
     # legend_1.name = "Wraith"
     # legend_1.stats = "Random stats"
