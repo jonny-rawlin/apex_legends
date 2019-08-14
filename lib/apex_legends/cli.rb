@@ -1,7 +1,7 @@
 require_relative "./legends.rb"
 require_relative "./legend_scraper.rb"
 
-class ApexLegends::CLI < Legends
+class ApexLegends::CLI
   
   def call
     welcome
@@ -11,7 +11,7 @@ class ApexLegends::CLI < Legends
   end
   
   def welcome
-    puts "Welcome to King's Landing!"
+    puts "Welcome to Kings Canyon!"
   end 
   
   def list_legends
@@ -51,7 +51,7 @@ class ApexLegends::CLI < Legends
   end 
   
   def goodbye
-    puts "\r\nEnjoy your time in Kings Landing..."
+    puts "\r\nEnjoy your time in Kings Canyon..."
   end 
   
 end

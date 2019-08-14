@@ -24,7 +24,6 @@ class LegendScraper
     end
     
     @@legends
-    
   end
   
   def self.legend_scraper(legend_name)
@@ -65,5 +64,4 @@ class LegendScraper
   def self.all 
     @@legends
   end 
-  binding.pry 
 end
