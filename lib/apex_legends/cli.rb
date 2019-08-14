@@ -15,8 +15,8 @@ class ApexLegends::CLI
   end 
   
   def list_legends
-    puts "\r\nThese are your available Legends:"
-    @stat_list = Legends.stat_lister
+    puts "\r\nAvailable Legends:"
+    @stat_list = LegendScraper.all
     @legends = Legends.all_legends
     @stat_list.each do | legend, stat_title|
      puts "\r\n#{legend}:"
@@ -29,7 +29,7 @@ class ApexLegends::CLI
   end 
   
   def menu
-    puts "\r\nAbove are all of the available Legends' stats - you may need to scroll up to see view them all.\r\n\r\nTo find out more about a Legend from the list above, simply enter their number.\r\n\r\nYou can also type 'exit' at any time to leave the program"
+    puts "\r\nAbove are all of the available Legends' stats - you may need to scroll up to view them all.\r\n\r\nTo find out more about a Legend from the list above, simply enter their number.\r\n\r\nYou can also type 'exit' at any time to leave the program"
     input = nil 
     while input != "exit"
       input = gets.strip.downcase
