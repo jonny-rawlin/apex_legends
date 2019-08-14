@@ -1,7 +1,7 @@
 require 'pry'
-require_relative 'legend_scraper'
+require_relative "./legend_scraper.rb"
 
-class Legends
+class Legends < LegendScraper
   
   attr_accessor :name, :stats, :abilities, :bio 
   
@@ -15,9 +15,11 @@ class Legends
     legend_array
   end
   
-  def self.stats
+  def stats(the_legend)
     @legend_stats = LegendScraper.all
-    @legend_stats
+    @legend_stats.each.with_index do |legend, i|
+    puts "#{[the_legend][1]}"
+    end
     # ability_1 = 
     # ability_2 = 
     # ability_3 =

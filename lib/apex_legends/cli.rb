@@ -1,4 +1,6 @@
-class ApexLegends::CLI
+require_relative "./legends.rb"
+
+class ApexLegends::CLI < Legends
   
   def call 
     list_legends
@@ -20,7 +22,7 @@ class ApexLegends::CLI
       
       if input.to_i > 0
         the_legend = @legends[input.to_i-1]
-        puts "#{Legends.stats}\r\n\r\n- If you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
+        puts "#{the_legend} - #{stats(the_legend)}\r\n\r\n- If you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
         puts @legends
       end 
