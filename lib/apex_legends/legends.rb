@@ -3,27 +3,39 @@ require_relative "./legend_scraper.rb"
 
 class Legends < LegendScraper
   
-  attr_accessor :name, :stats, :abilities, :bio 
+  # attr_accessor :name, :stats, :abilities, :bio 
   
   def self.all_legends
     legend_array = []
     @legends = LegendScraper.stat_scraper
     @legends.each.with_index(1) do |legend, i|
       legend_array << "#{i}. #{legend[0]}" 
-    end 
-      
+    end
     legend_array
   end
+    
+  def self.stat_lister
+    @stat_list = LegendScraper.all
+    @stat_list.each do | legend, stat_title|
+     puts "#{legend}:"
+      stat_title.each do |stat_title, value|
+       puts "  #{stat_title.to_s.split("_").map {|stat| stat.capitalize}.join(" ")}: #{value}"
+      end
+    end 
+  end
   
-  def stats(the_legend)
+  def self.stats(the_legend)
     @legend_stats = LegendScraper.all
     @legend_stats.each.with_index do |legend, i|
     puts "#{[the_legend][1]}"
     end
-    # ability_1 = 
-    # ability_2 = 
-    # ability_3 =
-  end 
+  end
+  
+  # def self.abilities
+  #   ability_1 = 
+  #   ability_2 = 
+  #   ability_3 =
+  # end 
   
     # legend_1 = self.new 
     # legend_1.name = "Wraith"

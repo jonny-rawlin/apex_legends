@@ -10,7 +10,9 @@ class ApexLegends::CLI < Legends
   
   def list_legends
     puts "Available Legends:"
+    @stat_list = Legends.stat_lister
     @legends = Legends.all_legends
+    puts @stat_list
     puts @legends
   end 
   
@@ -21,8 +23,8 @@ class ApexLegends::CLI < Legends
       input = gets.strip.downcase
       
       if input.to_i > 0
-        the_legend = @legends[input.to_i-1]
-        puts "#{the_legend} - #{stats(the_legend)}\r\n\r\n- If you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
+        the_legend = (@legends[input.to_i-1]).split(" ")
+        puts "#{the_legend[1]} - #{Legends.stats(the_legend[1])}\r\n\r\n- If you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
         puts @legends
       end 
