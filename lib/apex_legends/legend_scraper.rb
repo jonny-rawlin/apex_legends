@@ -29,22 +29,36 @@ class LegendScraper
   
   def self.legend_scraper(legend_name)
     
-  bloodhound = "https://dreamteam.gg/apex/wiki/apex-legends-bloodhound-guide"
-  gibraltar = "https://dreamteam.gg/apex/wiki/apex-legends-gibraltar-guide"
-  lifeline = "https://dreamteam.gg/apex/wiki/apex-legends-lifeline-guide"
-  pathfinder = "https://dreamteam.gg/apex/wiki/apex-legends-pathfinder"
-  wraith = "https://dreamteam.gg/apex/wiki/apex-legends-wraith-guide"
-  bangalore = "https://dreamteam.gg/apex/wiki/apex-legends-bangalore-guide"
-  caustic = "https://dreamteam.gg/apex/wiki/apex-legends-caustic"
-  mirage = "https://dreamteam.gg/apex/wiki/apex-legends-mirage-guide"
-  octane = "https://dreamteam.gg/apex/wiki/apex-legends-octane-guide"
-  wattson = "https://dreamteam.gg/apex/wiki/apex-legends-wattson-guide"
-  
-  legend_info = Nokogiri::HTML(open("#{legend_name}"))
-  
-  legend_bio = legend_info.css("div.text___1q3Pv").text
-  
-  puts legend_bio
+    url = ""
+    
+    if legend_name == "bloodhound"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-bloodhound-guide"
+    elsif legend_name == "gibraltar"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-gibraltar-guide"
+    elsif legend_name == "lifeline"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-lifeline-guide"
+    elsif legend_name == "pathfinder"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-pathfinder"
+    elsif legend_name == "wraith"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-wraith-guide"
+    elsif legend_name == "bangalore"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-bangalore-guide"
+    elsif legend_name == "caustic"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-caustic"
+    elsif legend_name == "mirage"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-mirage-guide"
+    elsif legend_name == "octane"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-octane-guide"
+    elsif legend_name == "wattson"
+      url = "https://dreamteam.gg/apex/wiki/apex-legends-wattson-guide"
+    end 
+    
+    legend_info = Nokogiri::HTML(open(url))
+    
+    legend_bio = legend_info.css("div.text___1q3Pv").text
+    
+    puts "\r\n"
+    puts legend_bio
     
   end 
   

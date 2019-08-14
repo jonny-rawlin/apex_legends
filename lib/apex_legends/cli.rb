@@ -1,4 +1,5 @@
 require_relative "./legends.rb"
+require_relative "./legend_scraper.rb"
 
 class ApexLegends::CLI < Legends
   
@@ -35,7 +36,10 @@ class ApexLegends::CLI < Legends
       
       if input.to_i > 0
         the_legend = (@legends[input.to_i-1]).split(" ")
-        puts "\r\n#{the_legend[1]} -\r\n\r\nIf you'd like to select this Legend then type their name below. You can also type 'list legends' to see all of the options again."
+        legend_value = the_legend[1]
+        arg = legend_value.downcase
+        bio = LegendScraper.legend_scraper(arg)
+        puts "\r\n#{bio} -\r\n\r\nIf you'd like to select this Legend then type 'yes' to confirm. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
         puts @legends
       end 
