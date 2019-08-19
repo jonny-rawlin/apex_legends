@@ -22,14 +22,27 @@ class LegendScraper
         :headshots_per_kill => (((((((stats.text).tr("E", " ")).tr("H", " ")).tr("W", " ")).tr("D", " ")).tr("K", " ")).tr("L", " ")).split(" ")[25]
       }
     end
-    
-    @@legends
+    legends_array = []
+    @@legends.each do |name, legend_hash|
+      legend = Legend.new
+      legend.percentage_chosen = legend_hash[:percentage_chosen]
+      legend.win_rate = legend_hash[:win_rate]
+      legend.name = name.to_s
+      legend.damage_per_match = legend_hash[:damage_per_match]
+      legend.kills_per_match = legend_hash[:kills_per_match]
+      legend.headshots_per_kill = legend_hash[:headshots_per_kill]
+      legends_array << legend
+    end
+    legends_array
   end
   
-  def self.legend_scraper(legend_name)
-    
+  def self.legend_scraper(legend)
+    if legend.scraped
+      legend
+    else
+      legend.scraped = true
     url = ""
-    
+    legend_name = legend.name.downcase
     if legend_name == "bloodhound"
       url = "https://dreamteam.gg/apex/wiki/apex-legends-bloodhound-guide"
     elsif legend_name == "gibraltar"
@@ -51,13 +64,12 @@ class LegendScraper
     elsif legend_name == "wattson"
       url = "https://dreamteam.gg/apex/wiki/apex-legends-wattson-guide"
     end 
-    
     legend_info = Nokogiri::HTML(open(url))
     
-    legend_bio = legend_info.css("div.text___1q3Pv").text
+    legend.bio = legend_info.css("div.text___1q3Pv").text
     
-    puts "\r\n"
-    puts legend_bio
+  end
+    
     
   end 
   

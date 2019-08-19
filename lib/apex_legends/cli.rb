@@ -16,16 +16,13 @@ class ApexLegends::CLI
   
   def list_legends
     puts "\r\nAvailable Legends:"
-    @stat_list = LegendScraper.all
-    @legends = Legends.all_legends
-    @stat_list.each do | legend, stat_title|
-     puts "\r\n#{legend}:"
-      stat_title.each do |stat_title, value|
-       puts "  #{stat_title.to_s.split("_").map {|stat| stat.capitalize}.join(" ")}: #{value}"
-      end
+    Legend.all.each do | legend |
+     puts "\r\n#{legend.name}:"
+    #puts "Kills: #{legend.kills}"
+    #puts "  #{stat_title.to_s.split("_").map {|stat| stat.capitalize}.join(" ")}: #{value}"
+
     end
     puts "\r\n"
-    puts @legends
   end 
   
   def menu
@@ -35,16 +32,14 @@ class ApexLegends::CLI
       input = gets.strip.downcase
       
       if input.to_i > 0
-        the_legend = (@legends[input.to_i-1]).split(" ")
-        legend_value = the_legend[1]
-        arg = legend_value.downcase
-        bio = LegendScraper.legend_scraper(arg)
-        puts "\r\n#{bio} -\r\n\r\nIf you'd like to select this Legend then type 'yes' to confirm. You can also type 'list legends' to see all of the options again."
+        the_legend = Legend.all[input.to_i-1]
+        LegendScraper.legend_scraper(the_legend)
+        puts "\r\n#{the_legend.bio} -\r\n\r\nIf you'd like to select this Legend then type 'yes' to confirm. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
         puts @legends
       elsif input == "yes"
         puts "\r\nThat's a great choice! You can now type 'exit' to leave the program"
-      else 
+      elsif input != "exit"
         puts "\r\nI'm sorry, I didn't understand that. You can type 'list legends' if you need to see the list again."
       end 
     end 
