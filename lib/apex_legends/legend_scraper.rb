@@ -34,39 +34,35 @@ class LegendScraper
   
   def self.legend_scraper(legend)
     if legend.scraped
-      legend
+      legend.bio
     else
-      legend.scraped = true
-    url = ""
-    legend_name = legend.name.downcase
-    if legend_name == "bloodhound"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-bloodhound-guide"
-    elsif legend_name == "gibraltar"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-gibraltar-guide"
-    elsif legend_name == "lifeline"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-lifeline-guide"
-    elsif legend_name == "pathfinder"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-pathfinder"
-    elsif legend_name == "wraith"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-wraith-guide"
-    elsif legend_name == "bangalore"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-bangalore-guide"
-    elsif legend_name == "caustic"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-caustic"
-    elsif legend_name == "mirage"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-mirage-guide"
-    elsif legend_name == "octane"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-octane-guide"
-    elsif legend_name == "wattson"
-      url = "https://dreamteam.gg/apex/wiki/apex-legends-wattson-guide"
-    end 
+      url = ""
+      legend_name = legend.name.downcase
+      if legend_name == "bloodhound"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-bloodhound-guide"
+      elsif legend_name == "gibraltar"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-gibraltar-guide"
+      elsif legend_name == "lifeline"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-lifeline-guide"
+      elsif legend_name == "pathfinder"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-pathfinder"
+      elsif legend_name == "wraith"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-wraith-guide"
+      elsif legend_name == "bangalore"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-bangalore-guide"
+      elsif legend_name == "caustic"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-caustic"
+      elsif legend_name == "mirage"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-mirage-guide"
+      elsif legend_name == "octane"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-octane-guide"
+      elsif legend_name == "wattson"
+        url = "https://dreamteam.gg/apex/wiki/apex-legends-wattson-guide"
+      end 
     legend_info = Nokogiri::HTML(open(url))
-    
     legend.bio = legend_info.css("div.text___1q3Pv").text
-    
-  end
-    
-    
+    end
+    legend.scraped = true
   end 
   
   def self.all 

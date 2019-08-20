@@ -34,11 +34,21 @@ class ApexLegends::CLI
       
       
       if input.to_i > 0
-        the_legend = Legend.all[input.to_i-1]
+        the_legend = Legend.legend_list[input.to_i-1]
         LegendScraper.legend_scraper(the_legend)
         puts "\r\n#{the_legend.bio} -\r\n\r\nIf you'd like to select this Legend then type 'yes' to confirm. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
-        puts Legend.list_legends
+        counter = 1
+        Legend.legend_list.each do | legend |
+          puts "\r\n#{counter}.#{legend.name}:"
+          puts "percentage_chosen: #{legend.percentage_chosen}"
+          puts "win_rate: #{legend.win_rate}"
+          puts "damage_per_match: #{legend.damage_per_match}"
+          puts "kills_per_match: #{legend.kills_per_match}"
+          puts "headshots_per_kill: #{legend.headshots_per_kill}"
+          counter +=1
+          puts "\r\n\r\nTo find out more about a Legend from the list above, simply enter their number.\r\n\r\nYou can also type 'exit' at any time to leave the program"
+        end
       elsif input == "yes"
         puts "\r\nThat's a great choice! You can now type 'exit' to leave the program"
       elsif input != "exit"
