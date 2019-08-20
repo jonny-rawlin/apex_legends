@@ -1,6 +1,3 @@
-require_relative "./legends.rb"
-require_relative "./legend_scraper.rb"
-
 class ApexLegends::CLI
   
   def call
@@ -15,12 +12,16 @@ class ApexLegends::CLI
   end 
   
   def list_legends
+    counter = 1
     puts "\r\nAvailable Legends:"
     Legend.all.each do | legend |
-     puts "\r\n#{legend.name}:"
-    #puts "Kills: #{legend.kills}"
-    #puts "  #{stat_title.to_s.split("_").map {|stat| stat.capitalize}.join(" ")}: #{value}"
-
+      puts "\r\n#{counter}.#{legend.name}:"
+      puts "percentage_chosen: #{legend.percentage_chosen}"
+      puts "win_rate: #{legend.win_rate}"
+      puts "damage_per_match: #{legend.damage_per_match}"
+      puts "kills_per_match: #{legend.kills_per_match}"
+      puts "headshots_per_kill: #{legend.headshots_per_kill}"
+      counter +=1
     end
     puts "\r\n"
   end 
@@ -31,12 +32,13 @@ class ApexLegends::CLI
     while input != "exit"
       input = gets.strip.downcase
       
+      
       if input.to_i > 0
         the_legend = Legend.all[input.to_i-1]
         LegendScraper.legend_scraper(the_legend)
         puts "\r\n#{the_legend.bio} -\r\n\r\nIf you'd like to select this Legend then type 'yes' to confirm. You can also type 'list legends' to see all of the options again."
       elsif input == "list legends"
-        puts @legends
+        puts Legend.list_legends
       elsif input == "yes"
         puts "\r\nThat's a great choice! You can now type 'exit' to leave the program"
       elsif input != "exit"
